@@ -52,23 +52,33 @@
 
 }
 .todos{
-    display: flex;
-    justify-content: space-evenly;
-    width: 47.5%;
-    flex-direction: column;
+    /* width: 45.5; */
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
     padding: 15px;
     border-radius: 5px;
     background-color: rgb(50,  195,205);
+    grid-gap: 10px;
+}
+.todos + .todos{
+    margin-left: 10px;
+}
+
+.todos > span {
+    grid-column: 1 / -1;
 }
 .todos__heading{
     font-size: 30px;
     color: white;
+    width: 100%;
 }
 .todos__single{
     display: flex;
-    width: 29.5%;
+    /* width: 29.5%; */
     border-radius: 5px;
     padding: 20px;
+    align-items: center;
     margin-top: 15px;
     background-image: url("https://img.freepik.com/free-photo/crumpled-yellow-paper-background-close-up_60487-2390.jpg?size=626&ext=jpg");
     transition: 0.2s;
@@ -92,36 +102,62 @@
     font-size: 25px;
     cursor:pointer;
 }
-
+/*
 @media (max-width: 1100px){
     .todos__single{
         width:45%;
     }
+   
 }
-
+*/
 @media (max-width:700px){
     .input{
         width: 95%;
     }
+    .container{
+        flex-direction: column;
+        align-items: center;
+    }
     .todos{
         width:95%;
         margin-bottom: 10px;
+        grid-template-columns: 1fr;
+        padding: 15px;
+     
     }
-    .todos__single{
-        width: 95%;
-        flex-direction: column;
+    .todos + .todos{
+        margin-left: unset;
+    }
+}
+@media (max-width:500px) {
+    .todos{
+        width:85%;
+        margin-bottom: 10px;
+     
+    } 
+    .todos__heading{
+        width: 80%;
+    }  
+    .todos > span{
+        font-size: 18px;
+    }
+
+    .icon{
+        margin-left: 5px;
+        font-size: 60%;
+        cursor:pointer;
     }
 }
 
 .remove{
-    background-color: rgb(235,103,80);
+    background-color: rgb(54, 201, 130);
 }
 
 .dragactive {
     background-color :rgb(0,221,236);
 }
 .dragcomplete{
-    background-color: rgb(255,38,0);
+    background-color: rgb(80, 235, 160);
 }
 .drag{
     box-shadow: 0 0 20px black;
